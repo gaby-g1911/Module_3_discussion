@@ -1,47 +1,55 @@
 # Module_3_discussion
-using Sytem;
-using Sytem.Collections.Generic;
-
-enum StockSector
+public enum FurColor
 {
-    Technology;
-    Finance;
-    Healthcare;
-    Energy
+    White,
+    Brown,
+    Black,
+    Spotted
 }
-public class Stock
+
+public class Bunny
 {
-    public decimmal CurrentPrice {get; set;}
-    public decimal SharesOwned {get; set;}
+    public string? Name;
+    public bool LikesCarrots;
+    public bool LikesHumans;
+    public  FurColor Color;
 
-    public decimal Worth => CurrentPrice * SharesOwned
+    public Bunny() {}
 
-    public StockSector Sector {get; set;}
-    public string Name {get; set;}
-
-    public void Print()
+    public Bunny(string name)
     {
-        Console.WriteLine($"Stock: {Name}");
-        Console.WriteLine($"Sector: {Sector});
-        Console.WriteLine($"Shares Owned: {ShareOwned}");
-        Console.WriteLine($"Current Price: ${CurrentPrice}");
-        Console.WriteLine($Total Worth: ${Worth}");
+        Name = name;
+    }
+
+    public void Describe()
+    {
+        Console.WriteLine($"Bunny: {Name}");
+        Console.WriteLine($"Likes Carrots: {LikesCarrots}");
+        Console.WriteLine($"Likes Humans: {LikesHumans}");
+        Console.WriteLine($"Fur Color: {Color}");
         Console.WriteLine();
     }
 }
+
 class Program
 {
     static void Main()
     {
-        List<Stock> portfolio = new List<Stock>
-        {
-            new Stock {Name = "Apple", CurrentPrice = 180.50m, SharedOwned = 10, Sector = StockSector.Technology},
-            new Stock {name = "Pfizer", CurrentPrice = 45.25m, SharesOwned = 20, Sector = StockSector.Healthcare},
-            new Stock {"ExxonMobil", CurrentPrice = 95.75m, SharesOwned = 15, Sector = StockSector.Energy}
+        Bunny b1 = new Bunny("Bo") 
+        { 
+            LikesCarrots = true, 
+            LikesHumans = false,
+            Color = FurColor.White
         };
-        foreach (var stock in portfolio)
+
+        Bunny b2 = new Bunny("Luna")
         {
-            stock.Print();
-        }
+            LikesCarrots = true,
+            LikesHumans = true,
+            Color = FurColor.Spotted
+        };
+
+        b1.Describe();
+        b2.Describe();
     }
 }
